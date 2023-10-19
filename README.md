@@ -236,24 +236,14 @@ To implement Round Robin (RR) Scheduling
 
 5. Enqueue processes that arrive at time 0 into the ready queue and mark them as entered (isentered) with count increments.
 
-6. Enter the main scheduling loop, which continues until the timer reaches the total remaining burst time (totalsrt).
 
-7. Dequeue a process from the front of the ready queue (queue[f]) and select it for execution.
+6. If the selected process is not completed, enqueue it back into the ready queue.
 
-8. If the selected process is starting for the first time (isstarted is 0), record its start time (ST) and calculate its waiting time (WT).
+7. Repeat the scheduling loop until the timer reaches totalsrt.
 
-9. Execute the process for a time quantum (tq) or until its burst time (BUT) is less than tq, whichever comes first. Update the timer accordingly.
-10. If the process has completed its burst time (BUT becomes 0), record its finish time (FT), calculate its waiting time (WT), turnaround time (TT), and response ratio (RR), and mark it as completed (iscompleted).
+8. Display the scheduling results, including process ID (PRO), arrival time (AT), initial burst time (BUT), start time (ST), finish time (FT), waiting time (WT), turnaround time (TT), and response ratio (RR) for each process.
 
-11. Check for processes that have arrived and have not entered the ready queue (isentered is 0). Enqueue them into the ready queue with count increments.
-
-12. If the selected process is not completed, enqueue it back into the ready queue.
-
-13. Repeat the scheduling loop until the timer reaches totalsrt.
-
-14. Display the scheduling results, including process ID (PRO), arrival time (AT), initial burst time (BUT), start time (ST), finish time (FT), waiting time (WT), turnaround time (TT), and response ratio (RR) for each process.
-
-15. Calculate and display the average waiting time (AWT) and average turnaround time (ATAT) for all processes.
+9. Calculate and display the average waiting time (AWT) and average turnaround time (ATAT) for all processes.
 
 ## PROGRAM:
 ```c
@@ -340,19 +330,8 @@ To implement Priority Preemptive Scheduling
 
 6. Display the Gantt Chart header.
 
-7. Enter the main scheduling loop that continues until all processes have completed execution (completed equals n).
 
-8. Inside the loop, find the highest priority process that has arrived (arrival_time <= time) and has remaining burst time (remaining_time > 0).
-
-9. If a process with the highest priority is found, execute it for 1 unit of time by decrementing its remaining_time and updating the Gantt Chart.
-
-10. If the process has completed its execution (remaining_time becomes 0), increment the completed process count.
-
-11. If no process is available to run at the current time, display a message indicating that no process is running at that time.
-
-12. Repeat the loop until all processes are completed.
-
-13. Display the scheduling results, including the Gantt Chart, process ID, and execution time for each process.
+7. Display the scheduling results, including the Gantt Chart, process ID, and execution time for each process.
 
 
 ## PROGRAM:
@@ -426,21 +405,9 @@ To implement Priority Non-Preemptive Scheduling
 
 5. Enter the main scheduling loop, which continues until all processes have completed execution (i.e., completed variable reaches n).
 
-6. Within the loop, find the process with the highest priority that has arrived and not yet completed and has the lowest priority (higher priority value).
+6. After scheduling all processes, display the scheduling results in a tabular format, including PID, AT, SRT, ST, FT, WT, TT, RR, and priority for each process.
 
-7. If a process is found, update its start time (ST) and calculate waiting time (WT) if it's starting for the first time (isstarted[i] is 0).
-
-8. Reduce the remaining burst time (SRT) of the selected process by 1, indicating the execution of one time unit.
-
-9. Increment the timer by 1.
-
-10. If the selected process has completed its execution (SRT becomes 0), update its finish time (FT), waiting time (WT), turnaround time (TT), response ratio (RR), and set the process as completed (iscompleted[i] is 1).
-
-11. Continue this loop until all processes are completed.
-
-12. After scheduling all processes, display the scheduling results in a tabular format, including PID, AT, SRT, ST, FT, WT, TT, RR, and priority for each process.
-
-13. Calculate and display the average waiting time (AWT) and average turnaround time (ATAT) for all processes.
+7. Calculate and display the average waiting time (AWT) and average turnaround time (ATAT) for all processes.
 
 ## PROGRAM:
 ```py
